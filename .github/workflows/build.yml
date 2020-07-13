@@ -1,0 +1,52 @@
+name: build
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+
+env:
+  DOTNET_VERSION: 3.1.301
+
+jobs:
+  build-test-publish:
+    name: Build, Test & Publish
+    runs-on: windows-latest    
+    steps:
+    - uses: actions/checkout@v2.1.0
+
+    - name: Setup .NET Core and GitHub Packages
+      uses: actions/setup-dotnet@v1.4.0
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        source-url: https://nuget.pkg.github.com/paulem/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        
+    - name: Setup Azure SignTool
+      run: dotnet tool install azuresigntool --global
+      
+    - name: Build
+      run: dotnet build -c Release
+      
+    #- name: Test
+    #  run: dotnet test -c Release
+      
+    - name: Sign binaries
+      if: startsWith(github.ref, 'refs/tags/')
+      run: >
+        azuresigntool sign -tr http://timestamp.comodoca.com
+        -kvu ${{ secrets.AZURE_KEY_VAULT_URL }}
+        -kvi ${{ secrets.AZURE_KEY_VAULT_CLIENT_ID }}
+        -kvs ${{ secrets.AZURE_KEY_VAULT_CLIENT_SECRET }}
+        -kvc pmc
+        -v
+        src\Caliburn.Micro\bin\Release\net452\Caliburn.Micro.dll
+        src\Caliburn.Micro\bin\Release\netcoreapp3.1\Caliburn.Micro.dll
+      
+    - name: Create NuGet package
+      run: dotnet pack -c Release --no-restore --no-build
+      
+    - name: Publish to GitHub Packages
+      run: dotnet nuget push src\Caliburn.Micro\bin\Release\*.nupkg --skip-duplicate
