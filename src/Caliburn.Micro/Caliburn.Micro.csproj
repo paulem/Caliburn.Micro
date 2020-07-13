@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <Version>3.3.1</Version>
     <Copyright>© 2010 Blue Spire Consulting, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://caliburnmicro.com/</PackageProjectUrl>
@@ -18,7 +19,6 @@
     <Owners>Nigel Sampson, Rob Eisenberg, Thomas Ibel</Owners>
     <PackageTags>MVVM WPF Screen Behavior Model-View-ViewModel Presentation UI ViewModel Caliburn</PackageTags>
     <Description>A small, yet powerful framework, Caliburn.Micro implements a variety of UI patterns for solving real-world problems. Patterns that are highlighted include MVVM (Presentation Model), MVP and MVC.</Description>
-    <Version>3.3.0</Version>
     <PackageIcon>package-icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/paulem/caliburn-micro</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
