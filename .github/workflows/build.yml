@@ -3,7 +3,7 @@ name: build
 on:
   push:
     paths:
-      #- '.github/workflows/build.yml'
+      - '.github/workflows/build.yml'
       - 'src/**'
       - 'tests/**'
 
