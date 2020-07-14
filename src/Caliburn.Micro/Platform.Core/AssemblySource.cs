@@ -6,7 +6,6 @@
     using System.ComponentModel;
     using System.Linq;
     using System.Reflection;
-    using System.Windows;
 
     /// <summary>
     /// A source of assemblies that are inspectable by the framework.
@@ -41,7 +40,7 @@
     public static class AssemblySourceCache
     {
         static bool isInstalled;
-        static readonly IDictionary<String, Type> TypeNameCache = new Dictionary<string, Type>();
+        static readonly IDictionary<string, Type> TypeNameCache = new Dictionary<string, Type>();
 
         /// <summary>
         /// Extracts the types from the spezified assembly for storing in the cache.

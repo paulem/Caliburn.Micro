@@ -3,11 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Controls.Primitives;
     using System.Windows.Data;
-    using System.Linq;
     using System.Windows.Navigation;
 
     /// <summary>
@@ -165,7 +165,7 @@
             if (string.IsNullOrEmpty(view.Title) && haveDisplayName != null &&
                 !ConventionManager.HasBinding(view, Window.TitleProperty))
             {
-                var binding = new Binding("DisplayName") {Mode = BindingMode.TwoWay};
+                var binding = new Binding("DisplayName") { Mode = BindingMode.TwoWay };
                 view.SetBinding(Window.TitleProperty, binding);
             }
 
@@ -256,7 +256,7 @@
             if (string.IsNullOrEmpty(view.Title) && haveDisplayName != null &&
                 !ConventionManager.HasBinding(view, Page.TitleProperty))
             {
-                var binding = new Binding("DisplayName") {Mode = BindingMode.TwoWay};
+                var binding = new Binding("DisplayName") { Mode = BindingMode.TwoWay };
                 view.SetBinding(Page.TitleProperty, binding);
             }
 
@@ -289,7 +289,7 @@
 
             if (page == null)
             {
-                page = new Page {Content = view};
+                page = new Page { Content = view };
                 page.SetValue(View.IsGeneratedProperty, true);
             }
 
@@ -361,7 +361,7 @@
                     return;
                 }
 
-                var deactivatable = (IDeactivate) model;
+                var deactivatable = (IDeactivate)model;
 
                 deactivatingFromView = true;
                 deactivatable.Deactivate(true);
@@ -375,7 +375,7 @@
                     return;
                 }
 
-                ((IDeactivate) model).Deactivated -= Deactivated;
+                ((IDeactivate)model).Deactivated -= Deactivated;
 
                 if (deactivatingFromView)
                 {
@@ -396,7 +396,7 @@
                     return;
                 }
 
-                var guard = (IGuardClose) model;
+                var guard = (IGuardClose)model;
 
                 if (actuallyClosing)
                 {

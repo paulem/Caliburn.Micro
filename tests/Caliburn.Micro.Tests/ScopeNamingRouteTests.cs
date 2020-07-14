@@ -48,7 +48,7 @@ namespace Caliburn.Micro.WPF.Tests
             route.AddHop(d2, d3);
             route.AddHop(d3, d4);
 
-            var all = new List<DependencyObject> {d2, d3, d4};
+            var all = new List<DependencyObject> { d2, d3, d4 };
 
             var source = d1;
             DependencyObject target;

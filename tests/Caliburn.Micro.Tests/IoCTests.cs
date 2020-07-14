@@ -38,7 +38,7 @@
         {
             using (IoCReset.Create())
             {
-                Assert.Throws<InvalidOperationException>(() => IoC.Get<Object>());
+                Assert.Throws<InvalidOperationException>(() => IoC.Get<object>());
             }
         }
 
@@ -47,7 +47,7 @@
         {
             using (IoCReset.Create())
             {
-                Assert.Throws<InvalidOperationException>(() => IoC.GetAll<Object>());
+                Assert.Throws<InvalidOperationException>(() => IoC.GetAll<object>());
             }
         }
 
@@ -66,7 +66,7 @@
             using (IoCReset.Create())
             {
                 IoC.GetInstance = null;
-                Assert.Throws<NullReferenceException>(() => IoC.Get<Object>());
+                Assert.Throws<NullReferenceException>(() => IoC.Get<object>());
             }
         }
 

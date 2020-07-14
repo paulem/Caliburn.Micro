@@ -1,8 +1,8 @@
 ﻿namespace Caliburn.Micro
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
     using System.Windows;
@@ -59,7 +59,7 @@
                 foreach (var element in namedElements)
                 {
                     var cleanName = element.Name.Trim('_');
-                    var parts = cleanName.Split(new[] {'_'}, StringSplitOptions.RemoveEmptyEntries);
+                    var parts = cleanName.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
 
                     var property = viewModelType.GetPropertyCaseInsensitive(parts[0]);
                     var interpretedViewModelType = viewModelType;
@@ -201,7 +201,7 @@
 
             var noContext = Caliburn.Micro.Bind.NoContextProperty;
 
-            if ((bool) view.GetValue(noContext))
+            if ((bool)view.GetValue(noContext))
             {
                 Action.SetTargetWithoutContext(view, viewModel);
             }
@@ -217,7 +217,7 @@
                 viewAware.AttachView(view, context);
             }
 
-            if ((bool) view.GetValue(ConventionsAppliedProperty))
+            if ((bool)view.GetValue(ConventionsAppliedProperty))
             {
                 return;
             }

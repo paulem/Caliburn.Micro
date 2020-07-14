@@ -15,14 +15,14 @@ namespace Caliburn.Micro
     public static class BindingScope
     {
         static readonly List<ChildResolver> ChildResolvers = new List<ChildResolver>();
-        static readonly Dictionary<Type, Object> NonResolvableChildTypes = new Dictionary<Type, Object>();
+        static readonly Dictionary<Type, object> NonResolvableChildTypes = new Dictionary<Type, object>();
 
         static BindingScope()
         {
-            AddChildResolver<ContentControl>(e => new[] {e.Content as DependencyObject});
+            AddChildResolver<ContentControl>(e => new[] { e.Content as DependencyObject });
             AddChildResolver<ItemsControl>(e => e.Items.OfType<DependencyObject>().ToArray());
-            AddChildResolver<HeaderedContentControl>(e => new[] {e.Header as DependencyObject});
-            AddChildResolver<HeaderedItemsControl>(e => new[] {e.Header as DependencyObject});
+            AddChildResolver<HeaderedContentControl>(e => new[] { e.Header as DependencyObject });
+            AddChildResolver<HeaderedItemsControl>(e => new[] { e.Header as DependencyObject });
         }
 
         /// <summary>
@@ -67,7 +67,6 @@ namespace Caliburn.Micro
         /// <summary>
         /// Adds a child resolver.
         /// </summary>
-        /// <param name="filter">The type filter.</param>
         /// <param name="resolver">The resolver.</param>
         public static ChildResolver AddChildResolver<T>(Func<T, IEnumerable<DependencyObject>> resolver)
             where T : DependencyObject
@@ -135,7 +134,7 @@ namespace Caliburn.Micro
 
             if (routeHops.Root == null)
             {
-                throw new ArgumentException(String.Format("Root is null on the given {0}", typeof(ScopeNamingRoute)));
+                throw new ArgumentException(string.Format("Root is null on the given {0}", typeof(ScopeNamingRoute)));
             }
 
             var descendants = new List<FrameworkElement>();
@@ -223,10 +222,10 @@ namespace Caliburn.Micro
                     break;
                 if (root is Page)
                 {
-                    root = ((Page) root).Content as DependencyObject ?? root;
+                    root = ((Page)root).Content as DependencyObject ?? root;
                     break;
                 }
-                if ((bool) root.GetValue(View.IsScopeRootProperty))
+                if ((bool)root.GetValue(View.IsScopeRootProperty))
                     break;
 
                 if (root is ContentPresenter)

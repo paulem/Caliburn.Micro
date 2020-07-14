@@ -68,7 +68,7 @@ namespace Caliburn.Micro.WPF.Tests
         public void NameRegExMatchesValidCSharpIdentifiers()
         {
             var expression =
-                String.Concat("^", RegExHelper.NameRegEx, "$"); // Make sure we're doing a whole string match
+                string.Concat("^", RegExHelper.NameRegEx, "$"); // Make sure we're doing a whole string match
 
             Assert.True(Regex.IsMatch("identifier1", expression));
             Assert.True(Regex.IsMatch("_identifier2", expression));

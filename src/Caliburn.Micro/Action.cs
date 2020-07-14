@@ -106,7 +106,7 @@
         public static void Invoke(object target, string methodName, DependencyObject view = null,
             FrameworkElement source = null, object eventArgs = null, object[] parameters = null)
         {
-            var message = new ActionMessage {MethodName = methodName};
+            var message = new ActionMessage { MethodName = methodName };
 
             var context = new ActionExecutionContext
             {
@@ -121,7 +121,7 @@
 
             if (parameters != null)
             {
-                parameters.Apply(x => context.Message.Parameters.Add(x as Parameter ?? new Parameter {Value = x}));
+                parameters.Apply(x => context.Message.Parameters.Add(x as Parameter ?? new Parameter { Value = x }));
             }
 
             ActionMessage.InvokeAction(context);
@@ -157,7 +157,7 @@
             if (setContext && d is FrameworkElement)
             {
                 Log.Info("Setting DC of {0} to {1}.", d, target);
-                ((FrameworkElement) d).DataContext = target;
+                ((FrameworkElement)d).DataContext = target;
             }
 
             Log.Info("Attaching message handler {0} to {1}.", target, d);

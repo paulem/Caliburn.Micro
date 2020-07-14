@@ -1,7 +1,7 @@
 namespace Caliburn.Micro.WPF.Tests
 {
-    using Xunit;
     using System;
+    using Xunit;
 
     public class ViewLocatorTests
     {

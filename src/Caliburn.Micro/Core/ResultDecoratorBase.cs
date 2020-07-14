@@ -38,7 +38,7 @@
             }
             catch (Exception ex)
             {
-                InnerResultCompleted(innerResult, new ResultCompletionEventArgs {Error = ex});
+                InnerResultCompleted(innerResult, new ResultCompletionEventArgs { Error = ex });
             }
         }
 

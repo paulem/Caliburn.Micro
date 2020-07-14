@@ -1,8 +1,8 @@
 ﻿namespace Caliburn.Micro
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Used by the framework to pull instances from an IoC container and to inject dependencies into certain existing classes.
@@ -41,7 +41,7 @@
         /// <returns>The resolved instance.</returns>
         public static T Get<T>(string key = null)
         {
-            return (T) GetInstance(typeof(T), key);
+            return (T)GetInstance(typeof(T), key);
         }
 
         /// <summary>

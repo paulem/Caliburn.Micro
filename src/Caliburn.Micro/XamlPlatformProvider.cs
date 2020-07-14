@@ -124,7 +124,7 @@
         public virtual void ExecuteOnFirstLoad(object view, Action<object> handler)
         {
             var element = view as FrameworkElement;
-            if (element != null && !(bool) element.GetValue(PreviouslyAttachedProperty))
+            if (element != null && !(bool)element.GetValue(PreviouslyAttachedProperty))
             {
                 element.SetValue(PreviouslyAttachedProperty, true);
                 View.ExecuteOnLoad(element, (s, e) => handler(s));

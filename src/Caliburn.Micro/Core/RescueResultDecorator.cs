@@ -60,7 +60,7 @@
             }
             catch (Exception ex)
             {
-                OnCompleted(new ResultCompletionEventArgs {Error = ex});
+                OnCompleted(new ResultCompletionEventArgs { Error = ex });
                 return;
             }
 
@@ -72,13 +72,13 @@
             }
             catch (Exception ex)
             {
-                RescueCompleted(rescueResult, new ResultCompletionEventArgs {Error = ex});
+                RescueCompleted(rescueResult, new ResultCompletionEventArgs { Error = ex });
             }
         }
 
         void RescueCompleted(object sender, ResultCompletionEventArgs args)
         {
-            ((IResult) sender).Completed -= RescueCompleted;
+            ((IResult)sender).Completed -= RescueCompleted;
             OnCompleted(new ResultCompletionEventArgs
             {
                 Error = args.Error,

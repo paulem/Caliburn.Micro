@@ -24,7 +24,7 @@
         object IHaveActiveItem.ActiveItem
         {
             get { return ActiveItem; }
-            set { ActiveItem = (T) value; }
+            set { ActiveItem = (T)value; }
         }
 
         /// <summary>

@@ -40,7 +40,7 @@
         /// <param name="task">The completed task.</param>
         protected virtual void OnCompleted(Task task)
         {
-            Completed(this, new ResultCompletionEventArgs {WasCancelled = task.IsCanceled, Error = task.Exception});
+            Completed(this, new ResultCompletionEventArgs { WasCancelled = task.IsCanceled, Error = task.Exception });
         }
 
         /// <summary>
@@ -76,7 +76,7 @@
         protected override void OnCompleted(Task task)
         {
             if (!task.IsFaulted && !task.IsCanceled)
-                Result = ((Task<TResult>) task).Result;
+                Result = ((Task<TResult>)task).Result;
 
             base.OnCompleted(task);
         }

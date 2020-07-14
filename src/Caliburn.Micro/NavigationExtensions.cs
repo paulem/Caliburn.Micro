@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Caliburn.Micro
+﻿namespace Caliburn.Micro
 {
     /// <summary>
     /// Extension methods related to navigation.

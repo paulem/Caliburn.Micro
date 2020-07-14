@@ -47,7 +47,7 @@
         /// <param name="context">The context.</param>
         public void Execute(CoroutineExecutionContext context)
         {
-            Completed(this, new ResultCompletionEventArgs {WasCancelled = wasCancelled, Error = error});
+            Completed(this, new ResultCompletionEventArgs { WasCancelled = wasCancelled, Error = error });
         }
 
         /// <summary>

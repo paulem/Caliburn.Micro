@@ -157,7 +157,7 @@
         [AttachedPropertyBrowsableForTypeAttribute(typeof(DependencyObject))]
         public static bool GetAtDesignTime(DependencyObject dependencyObject)
         {
-            return (bool) dependencyObject.GetValue(AtDesignTimeProperty);
+            return (bool)dependencyObject.GetValue(AtDesignTimeProperty);
         }
 
         /// <summary>
@@ -175,7 +175,7 @@
             if (!View.InDesignMode)
                 return;
 
-            var atDesignTime = (bool) e.NewValue;
+            var atDesignTime = (bool)e.NewValue;
             if (!atDesignTime)
                 return;
 
@@ -195,7 +195,7 @@
                 return;
 
             var enable = d.GetValue(AtDesignTimeProperty);
-            if (enable == null || ((bool) enable) == false || e.NewValue == null)
+            if (enable == null || ((bool)enable) == false || e.NewValue == null)
                 return;
 
             var fe = d as FrameworkElement;

@@ -84,7 +84,7 @@
         void OnComplete(Exception error, bool wasCancelled)
         {
             enumerator.Dispose();
-            Completed(this, new ResultCompletionEventArgs {Error = error, WasCancelled = wasCancelled});
+            Completed(this, new ResultCompletionEventArgs { Error = error, WasCancelled = wasCancelled });
         }
     }
 }

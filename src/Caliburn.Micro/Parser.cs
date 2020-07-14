@@ -3,14 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Reflection;
     using System.Text.RegularExpressions;
     using System.Windows;
     using System.Windows.Data;
     using EventTrigger = Microsoft.Xaml.Behaviors.EventTrigger;
-    using TriggerBase = Microsoft.Xaml.Behaviors.TriggerBase;
     using TriggerAction = Microsoft.Xaml.Behaviors.TriggerAction;
-    using System.Text;
+    using TriggerBase = Microsoft.Xaml.Behaviors.TriggerBase;
 
     /// <summary>
     /// Parses text into a fully functional set of <see cref="TriggerBase"/> instances with <see cref="ActionMessage"/>.
@@ -40,7 +38,7 @@
             {
                 var triggerPlusMessage = LongFormatRegularExpression.IsMatch(messageText)
                     ? StringSplitter.Split(messageText, '=')
-                    : new[] {null, messageText};
+                    : new[] { null, messageText };
 
                 var messageDetail = triggerPlusMessage.Last()
                     .Replace("[", string.Empty)
@@ -75,7 +73,7 @@
                 .Replace("Event", string.Empty)
                 .Trim();
 
-            return new EventTrigger {EventName = triggerDetail};
+            return new EventTrigger { EventName = triggerDetail };
         };
 
         /// <summary>
@@ -122,7 +120,7 @@
         /// </summary>
         public static Func<DependencyObject, string, TriggerAction> InterpretMessageText = (target, text) =>
         {
-            return new ActionMessage {MethodName = Regex.Replace(text, "^Action", string.Empty).Trim()};
+            return new ActionMessage { MethodName = Regex.Replace(text, "^Action", string.Empty).Trim() };
         };
 
         /// <summary>
@@ -143,7 +141,7 @@
             }
             else if (target is FrameworkElement)
             {
-                var fe = (FrameworkElement) target;
+                var fe = (FrameworkElement)target;
                 var nameAndBindingMode = parameterText.Split(':').Select(x => x.Trim()).ToArray();
                 var index = nameAndBindingMode[0].IndexOf('.');
 
@@ -155,7 +153,7 @@
                         index == -1 ? nameAndBindingMode[0] : nameAndBindingMode[0].Substring(0, index),
                         index == -1 ? null : nameAndBindingMode[0].Substring(index + 1),
                         nameAndBindingMode.Length == 2
-                            ? (BindingMode) Enum.Parse(typeof(BindingMode), nameAndBindingMode[1], true)
+                            ? (BindingMode)Enum.Parse(typeof(BindingMode), nameAndBindingMode[1], true)
                             : BindingMode.OneWay
                     );
                 });

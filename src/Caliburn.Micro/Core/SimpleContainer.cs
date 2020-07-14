@@ -113,8 +113,8 @@
                 var typeToCreate = service.GetGenericArguments()[0];
                 var factoryFactoryType = typeof(FactoryFactory<>).MakeGenericType(typeToCreate);
                 var factoryFactoryHost = Activator.CreateInstance(factoryFactoryType);
-                var factoryFactoryMethod = factoryFactoryType.GetMethod("Create", new Type[] {typeof(SimpleContainer)});
-                return factoryFactoryMethod.Invoke(factoryFactoryHost, new object[] {this});
+                var factoryFactoryMethod = factoryFactoryType.GetMethod("Create", new Type[] { typeof(SimpleContainer) });
+                return factoryFactoryMethod.Invoke(factoryFactoryHost, new object[] { this });
             }
 
             if (enumerableType.IsAssignableFrom(service) && service.IsGenericType())
@@ -163,8 +163,8 @@
         public void BuildUp(object instance)
         {
             var injectables = from property in instance.GetType().GetProperties()
-                where property.CanRead && property.CanWrite && property.PropertyType.IsInterface()
-                select property;
+                              where property.CanRead && property.CanWrite && property.PropertyType.IsInterface()
+                              select property;
 
             foreach (var propertyInfo in injectables)
             {
@@ -190,7 +190,7 @@
             var entry = GetEntry(service, key);
             if (entry == null)
             {
-                entry = new ContainerEntry {Service = service, Key = key};
+                entry = new ContainerEntry { Service = service, Key = key };
                 entries.Add(entry);
             }
 
@@ -258,8 +258,8 @@
         static ConstructorInfo SelectEligibleConstructor(Type type)
         {
             return (from c in type.GetConstructors().Where(c => c.IsPublic)
-                orderby c.GetParameters().Length descending
-                select c).FirstOrDefault();
+                    orderby c.GetParameters().Length descending
+                    select c).FirstOrDefault();
         }
 
         class ContainerEntry : List<Func<SimpleContainer, object>>
@@ -272,7 +272,7 @@
         {
             public Func<T> Create(SimpleContainer container)
             {
-                return () => (T) container.GetInstance(typeof(T), null);
+                return () => (T)container.GetInstance(typeof(T), null);
             }
         }
     }

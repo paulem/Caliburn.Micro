@@ -116,7 +116,7 @@
         public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
         {
             CleanIfNeeded();
-            var enumerable = inner.Select(pair => new KeyValuePair<TKey, TValue>(pair.Key, (TValue) pair.Value.Target))
+            var enumerable = inner.Select(pair => new KeyValuePair<TKey, TValue>(pair.Key, (TValue)pair.Value.Target))
                 .Where(pair => pair.Value != null);
             return enumerable.GetEnumerator();
         }
@@ -246,7 +246,7 @@
                 return false;
             }
 
-            var result = (TValue) wr.Target;
+            var result = (TValue)wr.Target;
             if (result == null)
             {
                 inner.Remove(key);

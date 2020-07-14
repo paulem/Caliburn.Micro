@@ -82,7 +82,7 @@ namespace Caliburn.Micro
         [Category("Common Properties")]
         public string MethodName
         {
-            get { return (string) GetValue(MethodNameProperty); }
+            get { return (string)GetValue(MethodNameProperty); }
             set { SetValue(MethodNameProperty, value); }
         }
 
@@ -94,7 +94,7 @@ namespace Caliburn.Micro
         [Category("Common Properties")]
         public AttachedCollection<Parameter> Parameters
         {
-            get { return (AttachedCollection<Parameter>) GetValue(ParametersProperty); }
+            get { return (AttachedCollection<Parameter>)GetValue(ParametersProperty); }
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Caliburn.Micro
 
         static void HandlerPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((ActionMessage) d).UpdateContext();
+            ((ActionMessage)d).UpdateContext();
         }
 
         /// <summary>
@@ -289,7 +289,7 @@ namespace Caliburn.Micro
             var result = returnValue as IResult;
             if (result != null)
             {
-                returnValue = new[] {result};
+                returnValue = new[] { result };
             }
 
             var enumerable = returnValue as IEnumerable<IResult>;
@@ -343,10 +343,10 @@ namespace Caliburn.Micro
         public static Func<ActionMessage, object, MethodInfo> GetTargetMethod = (message, target) =>
         {
             return (from method in target.GetType().GetMethods()
-                where method.Name == message.MethodName
-                let methodParameters = method.GetParameters()
-                where message.Parameters.Count == methodParameters.Length
-                select method).FirstOrDefault();
+                    where method.Name == message.MethodName
+                    let methodParameters = method.GetParameters()
+                    where message.Parameters.Count == methodParameters.Length
+                    select method).FirstOrDefault();
         };
 
         /// <summary>
@@ -454,7 +454,7 @@ namespace Caliburn.Micro
                 context.Message.Detaching += delegate { inpc.PropertyChanged -= handler; };
             }
 
-            context.CanExecute = () => (bool) guard.Invoke(
+            context.CanExecute = () => (bool)guard.Invoke(
                 context.Target,
                 MessageBinder.DetermineParameters(context, guard.GetParameters()));
         };

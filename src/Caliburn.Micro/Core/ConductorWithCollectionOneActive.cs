@@ -100,13 +100,13 @@
                     }
                     else
                     {
-                        CloseStrategy.Execute(new[] {item}, (canClose, closable) =>
-                        {
-                            if (canClose)
-                            {
-                                CloseItemCore(item);
-                            }
-                        });
+                        CloseStrategy.Execute(new[] { item }, (canClose, closable) =>
+                          {
+                              if (canClose)
+                              {
+                                  CloseItemCore(item);
+                              }
+                          });
                     }
                 }
 

@@ -109,11 +109,11 @@
 
             var serviceType = typeof(TService);
             var types = from type in assembly.GetTypes()
-                where serviceType.IsAssignableFrom(type)
-                      && !type.IsAbstract()
-                      && !type.IsInterface()
-                      && filter(type)
-                select type;
+                        where serviceType.IsAssignableFrom(type)
+                              && !type.IsAbstract()
+                              && !type.IsInterface()
+                              && filter(type)
+                        select type;
 
             foreach (var type in types)
             {
@@ -132,7 +132,7 @@
         /// <returns>The instance.</returns>
         public static TService GetInstance<TService>(this SimpleContainer container, string key = null)
         {
-            return (TService) container.GetInstance(typeof(TService), key);
+            return (TService)container.GetInstance(typeof(TService), key);
         }
 
         /// <summary>

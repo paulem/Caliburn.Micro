@@ -43,7 +43,7 @@
             var nonGeneratedView = PlatformProvider.Current.GetFirstNonGeneratedView(view);
             PlatformProvider.Current.ExecuteOnFirstLoad(nonGeneratedView, OnViewLoaded);
             OnViewAttached(nonGeneratedView, context);
-            ViewAttached(this, new ViewAttachedEventArgs {View = nonGeneratedView, Context = context});
+            ViewAttached(this, new ViewAttachedEventArgs { View = nonGeneratedView, Context = context });
 
             var activatable = this as IActivate;
             if (activatable == null || activatable.IsActive)
@@ -62,11 +62,11 @@
             EventHandler<ActivationEventArgs> handler = null;
             handler = (s, e) =>
             {
-                ((IActivate) s).Activated -= handler;
+                ((IActivate)s).Activated -= handler;
                 var view = viewReference.Target;
                 if (view != null)
                 {
-                    PlatformProvider.Current.ExecuteOnLayoutUpdated(view, ((ViewAware) s).OnViewReady);
+                    PlatformProvider.Current.ExecuteOnLayoutUpdated(view, ((ViewAware)s).OnViewReady);
                 }
             };
             activatable.Activated += handler;

@@ -1,11 +1,11 @@
 ﻿namespace Caliburn.Micro
 {
     using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Globalization;
     using System.Linq;
     using System.Reflection;
-    using System.Collections.Generic;
-    using System.ComponentModel;
 
     /// <summary>
     /// A service that is capable of properly binding values to a method's parameters and creating instances of <see cref="IResult"/>.

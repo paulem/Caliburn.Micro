@@ -2,17 +2,17 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using System.Reflection;
-    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Controls.Primitives;
     using System.Windows.Data;
+    using System.Windows.Documents;
     using System.Windows.Markup;
     using System.Windows.Shapes;
     using EventTrigger = Microsoft.Xaml.Behaviors.EventTrigger;
-    using System.Windows.Documents;
 
     /// <summary>
     /// Used to configure the conventions used by the framework to apply bindings and create actions.
@@ -44,7 +44,7 @@
         public static DataTemplate DefaultItemTemplate = (DataTemplate)
             XamlReader.Parse(
                 "<DataTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' " +
-                "xmlns:cal='clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro.Platform'> " +
+                "xmlns:cal='clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro'> " +
                 "<ContentControl cal:View.Model=\"{Binding}\" VerticalContentAlignment=\"Stretch\" HorizontalContentAlignment=\"Stretch\" IsTabStop=\"False\" />" +
                 "</DataTemplate>"
             );
@@ -190,7 +190,7 @@
                     bindableProperty))
                     return false;
 
-                var tabControl = (TabControl) element;
+                var tabControl = (TabControl)element;
                 if (tabControl.ContentTemplate == null
                     && tabControl.ContentTemplateSelector == null
                     && property.PropertyType.IsGenericType)
@@ -230,7 +230,7 @@
                 }
 
                 ConfigureSelectedItem(element, Selector.SelectedItemProperty, viewModelType, path);
-                ApplyItemTemplate((ItemsControl) element, property);
+                ApplyItemTemplate((ItemsControl)element, property);
 
                 return true;
             };
@@ -243,15 +243,15 @@
                     return false;
                 }
 
-                ApplyItemTemplate((ItemsControl) element, property);
+                ApplyItemTemplate((ItemsControl)element, property);
 
                 return true;
             };
             AddElementConvention<ContentControl>(ContentControl.ContentProperty, "DataContext", "Loaded")
                     .GetBindableProperty =
-                delegate(DependencyObject foundControl)
+                delegate (DependencyObject foundControl)
                 {
-                    var element = (ContentControl) foundControl;
+                    var element = (ContentControl)foundControl;
 
                     if (element.Content is DependencyObject && !OverwriteContent)
                         return null;
@@ -285,7 +285,7 @@
                 ElementType = typeof(T),
                 GetBindableProperty = element => bindableProperty,
                 ParameterProperty = parameterProperty,
-                CreateTrigger = () => new EventTrigger {EventName = eventName}
+                CreateTrigger = () => new EventTrigger { EventName = eventName }
             });
         }
 
@@ -421,7 +421,7 @@
                     if (viewModelType.GetPropertyCaseInsensitive(potentialName) != null)
                     {
                         var selectionPath = path.Replace(baseName, potentialName);
-                        var binding = new Binding(selectionPath) {Mode = BindingMode.TwoWay};
+                        var binding = new Binding(selectionPath) { Mode = BindingMode.TwoWay };
                         var shouldApplyBinding = ConfigureSelectedItemBinding(selector, selectedItemProperty,
                             viewModelType, selectionPath, binding);
                         if (shouldApplyBinding)
@@ -483,7 +483,7 @@
         /// <returns>The property or null if not found.</returns>
         public static PropertyInfo GetPropertyCaseInsensitive(this Type type, string propertyName)
         {
-            var typeList = new List<Type> {type};
+            var typeList = new List<Type> { type };
 
             if (type.IsInterface)
             {

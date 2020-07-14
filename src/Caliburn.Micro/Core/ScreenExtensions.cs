@@ -61,9 +61,9 @@
             EventHandler<ActivationEventArgs> handler = null;
             handler = (s, e) =>
             {
-                var activatable = (IActivate) childReference.Target;
+                var activatable = (IActivate)childReference.Target;
                 if (activatable == null)
-                    ((IActivate) s).Activated -= handler;
+                    ((IActivate)s).Activated -= handler;
                 else
                     activatable.Activate();
             };
@@ -81,9 +81,9 @@
             EventHandler<DeactivationEventArgs> handler = null;
             handler = (s, e) =>
             {
-                var deactivatable = (IDeactivate) childReference.Target;
+                var deactivatable = (IDeactivate)childReference.Target;
                 if (deactivatable == null)
-                    ((IDeactivate) s).Deactivated -= handler;
+                    ((IDeactivate)s).Deactivated -= handler;
                 else
                     deactivatable.Deactivate(e.WasClosed);
             };

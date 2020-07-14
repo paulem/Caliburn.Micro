@@ -25,12 +25,12 @@
                 return;
             }
 
-            CloseStrategy.Execute(new[] {ActiveItem}, (canClose, items) =>
-            {
-                if (canClose)
-                    ChangeActiveItem(item, true);
-                else OnActivationProcessed(item, false);
-            });
+            CloseStrategy.Execute(new[] { ActiveItem }, (canClose, items) =>
+              {
+                  if (canClose)
+                      ChangeActiveItem(item, true);
+                  else OnActivationProcessed(item, false);
+              });
         }
 
         /// <summary>
@@ -45,11 +45,11 @@
                 return;
             }
 
-            CloseStrategy.Execute(new[] {ActiveItem}, (canClose, items) =>
-            {
-                if (canClose)
-                    ChangeActiveItem(default(T), close);
-            });
+            CloseStrategy.Execute(new[] { ActiveItem }, (canClose, items) =>
+              {
+                  if (canClose)
+                      ChangeActiveItem(default(T), close);
+              });
         }
 
         /// <summary>
@@ -58,7 +58,7 @@
         /// <param name="callback">The implementor calls this action with the result of the close check.</param>
         public override void CanClose(Action<bool> callback)
         {
-            CloseStrategy.Execute(new[] {ActiveItem}, (canClose, items) => callback(canClose));
+            CloseStrategy.Execute(new[] { ActiveItem }, (canClose, items) => callback(canClose));
         }
 
         /// <summary>
@@ -84,7 +84,7 @@
         /// <returns>The collection of children.</returns>
         public override IEnumerable<T> GetChildren()
         {
-            return new[] {ActiveItem};
+            return new[] { ActiveItem };
         }
     }
 }

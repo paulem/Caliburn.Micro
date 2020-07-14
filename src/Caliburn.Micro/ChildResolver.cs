@@ -56,7 +56,7 @@ namespace Caliburn.Micro
         /// <param name="resolver"></param>
         public ChildResolver(Func<T, IEnumerable<DependencyObject>> resolver) : base(
             t => typeof(T).IsAssignableFrom(t),
-            o => resolver((T) o))
+            o => resolver((T)o))
         {
         }
     }

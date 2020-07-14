@@ -20,7 +20,7 @@ namespace Caliburn.Micro
         /// </summary>
         public AttachedCollection()
         {
-            ((INotifyCollectionChanged) this).CollectionChanged += OnCollectionChanged;
+            ((INotifyCollectionChanged)this).CollectionChanged += OnCollectionChanged;
         }
 
         /// <summary>

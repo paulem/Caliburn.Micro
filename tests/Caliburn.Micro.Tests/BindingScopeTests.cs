@@ -61,7 +61,7 @@
         [Fact]
         public void A_given_Pages_Content_is_ScopeRoute_if_it_is_a_dependency_object()
         {
-            var page = new Page {Content = new Control()};
+            var page = new Page { Content = new Control() };
             var route = BindingScope.FindScopeNamingRoute(page);
 
             Assert.Same(page.Content, route.Root);

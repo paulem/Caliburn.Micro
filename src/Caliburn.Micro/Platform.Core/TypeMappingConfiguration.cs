@@ -36,7 +36,7 @@
         /// List of View suffixes for which default type mappings should be created. Applies only when UseNameSuffixesInMappings = true.
         /// Default values are "View", "Page"
         /// </summary>
-        public List<string> ViewSuffixList = new List<string>(new[] {"View", "Page"});
+        public List<string> ViewSuffixList = new List<string>(new[] { "View", "Page" });
 
         /// <summary>
         /// The name suffix for ViewModels. Applies only when UseNameSuffixesInMappings = true. The default is "ViewModel".

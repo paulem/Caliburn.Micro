@@ -99,7 +99,7 @@
                 var task = result as System.Threading.Tasks.Task;
                 if (task != null)
                 {
-                    result = new IResult[] {task.AsResult()};
+                    result = new IResult[] { task.AsResult() };
                 }
 
                 var coroutine = result as IEnumerable<IResult>;
@@ -107,7 +107,7 @@
                 {
                     var viewAware = target as IViewAware;
                     var view = viewAware != null ? viewAware.GetView() : null;
-                    var context = new CoroutineExecutionContext {Target = target, View = view};
+                    var context = new CoroutineExecutionContext { Target = target, View = view };
 
                     Coroutine.BeginExecute(coroutine.GetEnumerator(), context);
                 }
@@ -151,7 +151,7 @@
         /// <returns>A list of assemblies to inspect.</returns>
         protected virtual IEnumerable<Assembly> SelectAssemblies()
         {
-            return new[] {GetType().Assembly};
+            return new[] { GetType().Assembly };
         }
 
         /// <summary>
@@ -175,7 +175,7 @@
         /// <returns>The located services.</returns>
         protected virtual IEnumerable<object> GetAllInstances(Type service)
         {
-            return new[] {Activator.CreateInstance(service)};
+            return new[] { Activator.CreateInstance(service) };
         }
 
         /// <summary>

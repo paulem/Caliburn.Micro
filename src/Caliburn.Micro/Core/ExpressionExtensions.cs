@@ -15,17 +15,17 @@
         /// <returns>The member info.</returns>
         public static MemberInfo GetMemberInfo(this Expression expression)
         {
-            var lambda = (LambdaExpression) expression;
+            var lambda = (LambdaExpression)expression;
 
             MemberExpression memberExpression;
             if (lambda.Body is UnaryExpression)
             {
-                var unaryExpression = (UnaryExpression) lambda.Body;
-                memberExpression = (MemberExpression) unaryExpression.Operand;
+                var unaryExpression = (UnaryExpression)lambda.Body;
+                memberExpression = (MemberExpression)unaryExpression.Operand;
             }
             else
             {
-                memberExpression = (MemberExpression) lambda.Body;
+                memberExpression = (MemberExpression)lambda.Body;
             }
 
             return memberExpression.Member;

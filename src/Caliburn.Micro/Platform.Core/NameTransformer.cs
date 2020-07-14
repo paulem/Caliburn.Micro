@@ -31,7 +31,7 @@
         /// <param name = "globalFilterPattern">Regular expression pattern for global filtering</param>
         public void AddRule(string replacePattern, string replaceValue, string globalFilterPattern = null)
         {
-            AddRule(replacePattern, new[] {replaceValue}, globalFilterPattern);
+            AddRule(replacePattern, new[] { replaceValue }, globalFilterPattern);
         }
 
         /// <summary>

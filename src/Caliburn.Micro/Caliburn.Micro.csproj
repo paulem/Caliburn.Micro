@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>3.3.1</Version>
+    <Version>3.3.2</Version>
     <Copyright>© 2010 Blue Spire Consulting, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://caliburnmicro.com/</PackageProjectUrl>

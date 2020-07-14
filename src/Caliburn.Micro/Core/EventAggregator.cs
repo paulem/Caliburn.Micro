@@ -133,7 +133,7 @@
                 foreach (var @interface in interfaces)
                 {
                     var type = @interface.GetGenericArguments()[0];
-                    var method = @interface.GetMethod("Handle", new Type[] {type});
+                    var method = @interface.GetMethod("Handle", new Type[] { type });
 
                     if (method != null)
                     {
@@ -159,7 +159,7 @@
                 {
                     if (pair.Key.IsAssignableFrom(messageType))
                     {
-                        var result = pair.Value.Invoke(target, new[] {message});
+                        var result = pair.Value.Invoke(target, new[] { message });
                         if (result != null)
                         {
                             HandlerResultProcessing(target, result);

@@ -35,7 +35,7 @@
         {
             if (args.Error != null || !args.WasCancelled)
             {
-                OnCompleted(new ResultCompletionEventArgs {Error = args.Error});
+                OnCompleted(new ResultCompletionEventArgs { Error = args.Error });
             }
             else
             {
@@ -53,7 +53,7 @@
             }
             catch (Exception ex)
             {
-                OnCompleted(new ResultCompletionEventArgs {Error = ex});
+                OnCompleted(new ResultCompletionEventArgs { Error = ex });
                 return;
             }
 
@@ -65,14 +65,14 @@
             }
             catch (Exception ex)
             {
-                ContinueCompleted(continueResult, new ResultCompletionEventArgs {Error = ex});
+                ContinueCompleted(continueResult, new ResultCompletionEventArgs { Error = ex });
             }
         }
 
         void ContinueCompleted(object sender, ResultCompletionEventArgs args)
         {
-            ((IResult) sender).Completed -= ContinueCompleted;
-            OnCompleted(new ResultCompletionEventArgs {Error = args.Error, WasCancelled = (args.Error == null)});
+            ((IResult)sender).Completed -= ContinueCompleted;
+            OnCompleted(new ResultCompletionEventArgs { Error = args.Error, WasCancelled = (args.Error == null) });
         }
     }
 }

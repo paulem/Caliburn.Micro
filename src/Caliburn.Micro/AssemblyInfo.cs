@@ -1,4 +1,6 @@
 ﻿using System.Windows.Markup;
 
-[assembly: XmlnsPrefix("https://github.com/paulem/caliburn-micro", "cal")]
-[assembly: XmlnsDefinition("https://github.com/paulem/caliburn-micro", "Caliburn.Micro")]
+[assembly: XmlnsDefinition("http://www.caliburnproject.org", "Caliburn.Micro")]
+[assembly: XmlnsPrefix("http://www.caliburnproject.org", "cal")]
+[assembly: XmlnsDefinition("http://caliburnmicro.com", "Caliburn.Micro")]
+[assembly: XmlnsPrefix("http://caliburnmicro.com", "cm")]

@@ -1,6 +1,5 @@
 ﻿namespace Caliburn.Micro
 {
-    using System;
     using System.Threading.Tasks;
 
     /// <summary>

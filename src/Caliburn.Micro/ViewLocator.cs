@@ -1,10 +1,10 @@
 ﻿namespace Caliburn.Micro
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
     using System.Text.RegularExpressions;
-    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Interop;
@@ -48,17 +48,17 @@
         /// <param name="config">An instance of TypeMappingConfiguration that provides the settings for configuration</param>
         public static void ConfigureTypeMappings(TypeMappingConfiguration config)
         {
-            if (String.IsNullOrEmpty(config.DefaultSubNamespaceForViews))
+            if (string.IsNullOrEmpty(config.DefaultSubNamespaceForViews))
             {
                 throw new ArgumentException("DefaultSubNamespaceForViews field cannot be blank.");
             }
 
-            if (String.IsNullOrEmpty(config.DefaultSubNamespaceForViewModels))
+            if (string.IsNullOrEmpty(config.DefaultSubNamespaceForViewModels))
             {
                 throw new ArgumentException("DefaultSubNamespaceForViewModels field cannot be blank.");
             }
 
-            if (String.IsNullOrEmpty(config.NameFormat))
+            if (string.IsNullOrEmpty(config.NameFormat))
             {
                 throw new ArgumentException("NameFormat field cannot be blank.");
             }
@@ -102,7 +102,7 @@
             }
 
             //Check for <Namespace>.<BaseName><ViewSuffix> construct
-            AddNamespaceMapping(String.Empty, String.Empty, viewSuffix);
+            AddNamespaceMapping(string.Empty, string.Empty, viewSuffix);
 
             //Check for <Namespace>.ViewModels.<NameSpace>.<BaseName><ViewSuffix> construct
             AddSubNamespaceMapping(defaultSubNsViewModels, defaultSubNsViews, viewSuffix);
@@ -136,16 +136,16 @@
             RegisterViewSuffix(viewSuffix);
 
             var replist = new List<string>();
-            var repsuffix = useNameSuffixesInMappings ? viewSuffix : String.Empty;
+            var repsuffix = useNameSuffixesInMappings ? viewSuffix : string.Empty;
             const string basegrp = "${basename}";
 
             foreach (var t in nsTargetsRegEx)
             {
-                replist.Add(t + String.Format(nameFormat, basegrp, repsuffix));
+                replist.Add(t + string.Format(nameFormat, basegrp, repsuffix));
             }
 
             var rxbase = RegExHelper.GetNameCaptureGroup("basename");
-            var suffix = String.Empty;
+            var suffix = string.Empty;
             if (useNameSuffixesInMappings)
             {
                 suffix = viewModelSuffix;
@@ -155,13 +155,13 @@
                 }
             }
 
-            var rxsrcfilter = String.IsNullOrEmpty(nsSourceFilterRegEx)
+            var rxsrcfilter = string.IsNullOrEmpty(nsSourceFilterRegEx)
                 ? null
-                : String.Concat(nsSourceFilterRegEx, String.Format(nameFormat, RegExHelper.NameRegEx, suffix), "$");
+                : string.Concat(nsSourceFilterRegEx, string.Format(nameFormat, RegExHelper.NameRegEx, suffix), "$");
             var rxsuffix = RegExHelper.GetCaptureGroup("suffix", suffix);
 
             NameTransformer.AddRule(
-                String.Concat(nsSourceReplaceRegEx, String.Format(nameFormat, rxbase, rxsuffix), "$"),
+                string.Concat(nsSourceReplaceRegEx, string.Format(nameFormat, rxbase, rxsuffix), "$"),
                 replist.ToArray(),
                 rxsrcfilter
             );
@@ -177,7 +177,7 @@
         public static void AddTypeMapping(string nsSourceReplaceRegEx, string nsSourceFilterRegEx, string nsTargetRegEx,
             string viewSuffix = "View")
         {
-            AddTypeMapping(nsSourceReplaceRegEx, nsSourceFilterRegEx, new[] {nsTargetRegEx}, viewSuffix);
+            AddTypeMapping(nsSourceReplaceRegEx, nsSourceFilterRegEx, new[] { nsTargetRegEx }, viewSuffix);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@
 
             //Start pattern search from beginning of string ("^")
             //unless original string was blank (i.e. special case to indicate "append target to source")
-            if (!String.IsNullOrEmpty(nsSource))
+            if (!string.IsNullOrEmpty(nsSource))
             {
                 nsencoded = "^" + nsencoded;
             }
@@ -213,7 +213,7 @@
         /// <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
         public static void AddNamespaceMapping(string nsSource, string nsTarget, string viewSuffix = "View")
         {
-            AddNamespaceMapping(nsSource, new[] {nsTarget}, viewSuffix);
+            AddNamespaceMapping(nsSource, new[] { nsTarget }, viewSuffix);
         }
 
         /// <summary>
@@ -228,9 +228,9 @@
             var nsencoded = RegExHelper.NamespaceToRegEx(nsSource + ".");
 
             string rxbeforetgt, rxaftersrc, rxaftertgt;
-            var rxbeforesrc = rxbeforetgt = rxaftersrc = rxaftertgt = String.Empty;
+            var rxbeforesrc = rxbeforetgt = rxaftersrc = rxaftertgt = string.Empty;
 
-            if (!String.IsNullOrEmpty(nsSource))
+            if (!string.IsNullOrEmpty(nsSource))
             {
                 if (!nsSource.StartsWith("*"))
                 {
@@ -246,9 +246,9 @@
             }
 
             var rxmid = RegExHelper.GetCaptureGroup("subns", nsencoded);
-            var nsreplace = String.Concat(rxbeforesrc, rxmid, rxaftersrc);
+            var nsreplace = string.Concat(rxbeforesrc, rxmid, rxaftersrc);
 
-            var nsTargetsRegEx = nsTargets.Select(t => String.Concat(rxbeforetgt, t, ".", rxaftertgt)).ToArray();
+            var nsTargetsRegEx = nsTargets.Select(t => string.Concat(rxbeforetgt, t, ".", rxaftertgt)).ToArray();
             AddTypeMapping(nsreplace, null, nsTargetsRegEx, viewSuffix);
         }
 
@@ -260,7 +260,7 @@
         /// <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
         public static void AddSubNamespaceMapping(string nsSource, string nsTarget, string viewSuffix = "View")
         {
-            AddSubNamespaceMapping(nsSource, new[] {nsTarget}, viewSuffix);
+            AddSubNamespaceMapping(nsSource, new[] { nsTarget }, viewSuffix);
         }
 
         /// <summary>
@@ -281,9 +281,9 @@
             }
 
             if (viewType.IsInterface || viewType.IsAbstract || !typeof(UIElement).IsAssignableFrom(viewType))
-                return new TextBlock {Text = string.Format("Cannot create {0}.", viewType.FullName)};
+                return new TextBlock { Text = string.Format("Cannot create {0}.", viewType.FullName) };
 
-            view = (UIElement) System.Activator.CreateInstance(viewType);
+            view = (UIElement)System.Activator.CreateInstance(viewType);
 
             InitializeComponent(view);
 
@@ -325,16 +325,16 @@
             }
 
             var contextstr = ContextSeparator + context;
-            string grpsuffix = String.Empty;
+            string grpsuffix = string.Empty;
             if (useNameSuffixesInMappings)
             {
                 //Create RegEx for matching any of the synonyms registered
-                var synonymregex = "(" + String.Join("|", ViewSuffixList.ToArray()) + ")";
+                var synonymregex = "(" + string.Join("|", ViewSuffixList.ToArray()) + ")";
                 grpsuffix = RegExHelper.GetCaptureGroup("suffix", synonymregex);
             }
 
             const string grpbase = @"\${basename}";
-            var patternregex = String.Format(nameFormat, grpbase, grpsuffix) + "$";
+            var patternregex = string.Format(nameFormat, grpbase, grpsuffix) + "$";
 
             //Strip out any synonym by just using contents of base capture group with context string
             var replaceregex = "${basename}" + contextstr;
@@ -394,7 +394,7 @@
                 var viewType = LocateTypeForModelType(modelType, displayLocation, context);
 
                 return viewType == null
-                    ? new TextBlock {Text = string.Format("Cannot find view for {0}.", modelType)}
+                    ? new TextBlock { Text = string.Format("Cannot find view for {0}.", modelType) }
                     : GetOrCreateViewType(viewType);
             };
 

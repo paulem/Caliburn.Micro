@@ -42,7 +42,7 @@
             var conductor = new Conductor<IScreen>.Collection.OneActive();
             var conducted = new Screen();
             conductor.Items.Add(conducted);
-            ((IActivate) conductor).Activate();
+            ((IActivate)conductor).Activate();
             conductor.ActivateItem(conducted);
             Assert.True(conducted.IsActive);
             Assert.Equal(conducted, conductor.ActiveItem);
@@ -52,9 +52,9 @@
         public void CanCloseIsTrueWhenItemsAreClosable()
         {
             var conductor = new Conductor<IScreen>.Collection.OneActive();
-            var conducted = new StateScreen {IsClosable = true};
+            var conducted = new StateScreen { IsClosable = true };
             conductor.Items.Add(conducted);
-            ((IActivate) conductor).Activate();
+            ((IActivate)conductor).Activate();
             conductor.CanClose(Assert.True);
             Assert.False(conducted.IsClosed);
         }
@@ -63,10 +63,10 @@
         public void CanCloseIsTrueWhenItemsAreNotClosableAndCloseStrategyCloses()
         {
             var conductor = new Conductor<IScreen>.Collection.OneActive
-                {CloseStrategy = new DefaultCloseStrategy<IScreen>(true)};
-            var conducted = new StateScreen {IsClosable = true};
+            { CloseStrategy = new DefaultCloseStrategy<IScreen>(true) };
+            var conducted = new StateScreen { IsClosable = true };
             conductor.Items.Add(conducted);
-            ((IActivate) conductor).Activate();
+            ((IActivate)conductor).Activate();
             conductor.CanClose(Assert.True);
             Assert.True(conducted.IsClosed);
         }
@@ -128,11 +128,11 @@
         {
             var conductor = new Conductor<IScreen>.Collection.OneActive();
             var conducted = Enumerable.Range(0, 10000)
-                .Select(i => new Screen {DisplayName = i.ToString(CultureInfo.InvariantCulture)});
+                .Select(i => new Screen { DisplayName = i.ToString(CultureInfo.InvariantCulture) });
             conductor.Items.AddRange(conducted);
 
-            var defered1 = new DeferredCloseScreen {DisplayName = "d1", IsClosable = true};
-            var defered2 = new DeferredCloseScreen {DisplayName = "d2", IsClosable = true};
+            var defered1 = new DeferredCloseScreen { DisplayName = "d1", IsClosable = true };
+            var defered2 = new DeferredCloseScreen { DisplayName = "d2", IsClosable = true };
             conductor.Items.Insert(0, defered1);
             conductor.Items.Insert(500, defered2);
 
@@ -151,8 +151,8 @@
 
         class StateScreen : Screen
         {
-            public Boolean IsClosed { get; private set; }
-            public Boolean IsClosable { get; set; }
+            public bool IsClosed { get; private set; }
+            public bool IsClosable { get; set; }
 
             public override void CanClose(Action<bool> callback)
             {

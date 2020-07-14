@@ -1,9 +1,9 @@
 ﻿namespace Caliburn.Micro.WPF.Tests
 {
+    using Moq;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Moq;
     using Xunit;
 
     public class EventAggregator_Subscribing

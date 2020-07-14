@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xaml.Behaviors;
 namespace Caliburn.Micro
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
     using TriggerBase = Microsoft.Xaml.Behaviors.TriggerBase;
@@ -87,7 +85,7 @@ namespace Caliburn.Micro
                 return;
             }
 
-            var messageTriggers = (TriggerBase[]) d.GetValue(MessageTriggersProperty);
+            var messageTriggers = (TriggerBase[])d.GetValue(MessageTriggersProperty);
 
             var allTriggers = Interaction.GetTriggers(d);
 

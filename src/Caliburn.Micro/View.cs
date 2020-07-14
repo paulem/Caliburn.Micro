@@ -1,8 +1,8 @@
 ﻿namespace Caliburn.Micro
 {
     using System;
-    using System.Linq;
     using System.ComponentModel;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Markup;
@@ -157,11 +157,11 @@
                 return view;
             }
 
-            if ((bool) dependencyObject.GetValue(IsGeneratedProperty))
+            if ((bool)dependencyObject.GetValue(IsGeneratedProperty))
             {
                 if (dependencyObject is ContentControl)
                 {
-                    return ((ContentControl) dependencyObject).Content;
+                    return ((ContentControl)dependencyObject).Content;
                 }
                 var type = dependencyObject.GetType();
                 var contentProperty = type.GetAttributes<ContentPropertyAttribute>(true)
@@ -181,7 +181,7 @@
         /// <returns>Whether or not to apply conventions.</returns>
         public static bool? GetApplyConventions(DependencyObject d)
         {
-            return (bool?) d.GetValue(ApplyConventionsProperty);
+            return (bool?)d.GetValue(ApplyConventionsProperty);
         }
 
         /// <summary>
@@ -339,7 +339,7 @@
                     var descriptor =
                         DependencyPropertyDescriptor.FromProperty(DesignerProperties.IsInDesignModeProperty,
                             typeof(FrameworkElement));
-                    inDesignMode = (bool) descriptor.Metadata.DefaultValue;
+                    inDesignMode = (bool)descriptor.Metadata.DefaultValue;
                 }
 
                 return inDesignMode.GetValueOrDefault(false);

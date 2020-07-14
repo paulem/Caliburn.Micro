@@ -88,7 +88,7 @@ namespace Caliburn.Micro
 
         static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var parameter = (Parameter) d;
+            var parameter = (Parameter)d;
             var owner = parameter.Owner;
 
             if (owner != null)

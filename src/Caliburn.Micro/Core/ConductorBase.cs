@@ -24,12 +24,12 @@
 
         void IConductor.ActivateItem(object item)
         {
-            ActivateItem((T) item);
+            ActivateItem((T)item);
         }
 
         void IConductor.DeactivateItem(object item, bool close)
         {
-            DeactivateItem((T) item, close);
+            DeactivateItem((T)item, close);
         }
 
         IEnumerable IParent.GetChildren()
